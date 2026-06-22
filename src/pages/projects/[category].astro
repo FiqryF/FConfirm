@@ -46,31 +46,34 @@ const isPhotography = categoryType === "photography";
       rel="stylesheet"
     />
   </head>
-  <body data-home-only>
+  <body data-home-only data-project-category={categoryType}>
     <header class="site-header">
       <a class="brand" href="/">FIQRY FIRMANSYAH</a>
       <nav class="nav-links" aria-label="Navigasi utama">
         <a href="/#home">Home</a>
         <a href="/#about">About</a>
-        <a href="/#projects">Project</a>
+        <a class="active" href="/#projects">Project</a>
+        <a href="/#contact">Contact</a>
       </nav>
-      <button class="theme-toggle" type="button" aria-label="Switch theme" data-theme-toggle>
-        <span class="theme-toggle-track" aria-hidden="true">
-          <span class="theme-toggle-dot"></span>
-        </span>
-        <span data-theme-label>Night</span>
-      </button>
     </header>
 
     <main>
-      <section class="project-showcase project-page">
+      <section class:list={["project-showcase", "project-page", { "photography-gallery-page": isPhotography }]}>
+        <a class="project-back-icon" href="/#projects" aria-label="Kembali ke project">
+          <span aria-hidden="true"></span>
+        </a>
         <div class="project-heading">
-          <p class="section-eyebrow">{eyebrow}</p>
-          <h1>{title}</h1>
-          <a class="project-see-more" href="/#projects">Kembali</a>
+          {isPhotography ? (
+            <h1>Gallery</h1>
+          ) : (
+            <>
+              <p class="section-eyebrow">{eyebrow}</p>
+              <h1>{title}</h1>
+            </>
+          )}
         </div>
-        <p class="project-page-intro">{description}</p>
-        <div class="project-panels">
+        {!isPhotography && <p class="project-page-intro">{description}</p>}
+        <div class:list={["project-panels", { "gallery-project-panels": isPhotography }]}>
           <div class="project-panel is-active">
             <div class:list={["modern-project-grid", { "photo-project-grid": isPhotography }]}>
               {

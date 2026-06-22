@@ -19,74 +19,217 @@ import "../../styles.css";
     <header class="site-header">
       <a class="brand" href="/">FIQRY FIRMANSYAH</a>
       <nav class="nav-links" aria-label="Navigasi utama">
-        <a href="/">Home</a>
-        <a href="/about">About</a>
+        <a href="/#home">Home</a>
+        <a class="active" href="/about">About</a>
+        <a href="/#projects">Project</a>
+        <a href="/#contact">Contact</a>
       </nav>
-      <button class="theme-toggle" type="button" aria-label="Switch theme" data-theme-toggle>
-        <span class="theme-toggle-track" aria-hidden="true">
-          <span class="theme-toggle-dot"></span>
-        </span>
-        <span data-theme-label>Night</span>
-      </button>
     </header>
 
-    <main class="about-page">
-      <section class="about-hero">
+    <main class="about-page about-complete-page">
+      <a class="project-back-icon about-back-icon" href="/#about" aria-label="Kembali ke home about">
+        <span aria-hidden="true"></span>
+      </a>
+
+      <section class="about-hero about-complete-hero">
         <p class="section-eyebrow">About Me</p>
-        <h1>Frontend developer who cares about clarity, performance, and visual polish.</h1>
+        <h1>I design and build clean digital interfaces with responsive detail.</h1>
         <p>
-          Saya membangun interface web yang bersih, responsif, dan mudah digunakan. Fokus saya ada
-          pada struktur halaman, detail visual, serta pengalaman pengguna yang konsisten dari mobile
-          sampai desktop.
+          Saya fokus membuat website yang ringan, rapi, dan nyaman digunakan di berbagai ukuran
+          layar. Saya suka menggabungkan struktur frontend yang jelas, visual yang modern, dan detail
+          interaksi kecil agar halaman terasa hidup tanpa berlebihan.
         </p>
+        <div class="about-hero-meta" aria-label="Profile summary">
+          <span><strong>Frontend</strong> Main Focus</span>
+          <span><strong>Responsive</strong> Layout Detail</span>
+          <span><strong>Visual</strong> UI Polish</span>
+        </div>
       </section>
 
-      <section class="about-detail-grid">
-        <article class="about-detail-card">
+      <section class="about-profile-grid">
+        <article class="about-detail-card about-profile-card about-story-card">
           <p class="section-eyebrow">Profile</p>
           <h2>Tentang Saya</h2>
-          <p>
-            Saya tertarik pada frontend development karena menggabungkan logika, estetika, dan
-            pengalaman pengguna. Dalam setiap project, saya berusaha membuat tampilan yang tidak
-            hanya bagus dilihat, tetapi juga rapi secara struktur dan nyaman digunakan.
-          </p>
+          <div class="about-story-body">
+            <p>
+              Saya tertarik pada frontend development karena menggabungkan logika, estetika, dan
+              pengalaman pengguna. Dalam setiap project, saya berusaha membuat tampilan yang tidak
+              hanya bagus dilihat, tetapi juga rapi secara struktur dan nyaman digunakan.
+            </p>
+            <p>
+              Saat membuat halaman, saya memperhatikan hierarchy, spacing, warna, responsive behavior,
+              dan konsistensi komponen. Tujuannya sederhana: pengguna bisa memahami isi halaman dengan
+              cepat dan merasa nyaman saat menjelajahinya.
+            </p>
+          </div>
+          <div class="about-story-stats" aria-label="About highlights">
+            <span><strong>UI</strong> Clean interface</span>
+            <span><strong>UX</strong> Easy to scan</span>
+            <span><strong>Code</strong> Structured build</span>
+          </div>
         </article>
 
-        <article class="about-detail-card">
+        <article class="about-detail-card about-focus-card about-priority-card">
+          <p class="section-eyebrow">What I Care About</p>
+          <h2>Fokus Kerja</h2>
+          <ol class="about-priority-list">
+            <li>
+              <span>01</span>
+              <div>
+                <strong>Clean layout structure</strong>
+                <p>Susunan section jelas, spacing konsisten, dan informasi mudah discan.</p>
+              </div>
+            </li>
+            <li>
+              <span>02</span>
+              <div>
+                <strong>Responsive detail</strong>
+                <p>Tampilan tetap proporsional dari mobile sampai layar desktop besar.</p>
+              </div>
+            </li>
+            <li>
+              <span>03</span>
+              <div>
+                <strong>Visual consistency</strong>
+                <p>Warna, typography, card, dan state dibuat senada antar halaman.</p>
+              </div>
+            </li>
+          </ol>
+        </article>
+      </section>
+
+      <section class="about-section-block">
+        <div class="about-section-heading">
+          <p class="section-eyebrow">Skills</p>
+          <h2>Skill dan tools yang saya gunakan.</h2>
+        </div>
+        <div class="about-skill-grid about-modern-skill-grid">
+          <article class="about-detail-card about-modern-skill-card">
+            <span class="skill-index">01</span>
+            <div>
+              <h3>Frontend</h3>
+              <p>Membangun halaman web dengan HTML semantik, CSS yang terstruktur, Astro, dan JavaScript seperlunya.</p>
+            </div>
+            <div class="skill-cloud">
+              <span>Astro</span>
+              <span>HTML</span>
+              <span>CSS</span>
+              <span>JavaScript</span>
+            </div>
+          </article>
+          <article class="about-detail-card about-modern-skill-card">
+            <span class="skill-index">02</span>
+            <div>
+              <h3>Design Implementation</h3>
+              <p>Menerjemahkan referensi desain menjadi tampilan web yang rapi, proporsional, dan konsisten.</p>
+            </div>
+            <div class="skill-cloud">
+              <span>Figma</span>
+              <span>UI Layout</span>
+              <span>Spacing</span>
+              <span>Typography</span>
+            </div>
+          </article>
+          <article class="about-detail-card about-modern-skill-card">
+            <span class="skill-index">03</span>
+            <div>
+              <h3>Responsive Polish</h3>
+              <p>Menyesuaikan tampilan untuk mobile, tablet, laptop, dan desktop besar tanpa membuat layout terasa aneh.</p>
+            </div>
+            <div class="skill-cloud">
+              <span>Mobile-first</span>
+              <span>Grid</span>
+              <span>Flexbox</span>
+              <span>Testing</span>
+            </div>
+          </article>
+        </div>
+      </section>
+
+      <section class="about-section-block about-list-duo">
+        <article class="about-detail-card about-list-card">
           <p class="section-eyebrow">Experience</p>
           <h2>Pengalaman</h2>
-          <ul class="timeline-list">
+          <ul class="about-simple-list">
             <li>
-              <strong>Portfolio & Landing Page</strong>
-              <span>Membangun halaman personal branding, landing page, dan UI presentasi project.</span>
+              <span>01</span>
+              <div>
+                <strong>Portfolio & Landing Page</strong>
+                <p>Membangun halaman personal branding, landing page, dan UI presentasi project.</p>
+              </div>
             </li>
             <li>
-              <strong>Responsive Interface</strong>
-              <span>Menyesuaikan layout untuk desktop, tablet, dan mobile dengan detail spacing.</span>
+              <span>02</span>
+              <div>
+                <strong>Responsive Interface</strong>
+                <p>Menyesuaikan layout untuk desktop, tablet, dan mobile dengan detail spacing.</p>
+              </div>
             </li>
             <li>
-              <strong>Design Implementation</strong>
-              <span>Menerjemahkan referensi visual/Figma menjadi halaman web yang hidup.</span>
+              <span>03</span>
+              <div>
+                <strong>Design Implementation</strong>
+                <p>Menerjemahkan referensi visual/Figma menjadi halaman web yang hidup.</p>
+              </div>
+            </li>
+            <li>
+              <span>04</span>
+              <div>
+                <strong>Project Presentation</strong>
+                <p>Mengemas karya web dan photography melalui card, gallery, dan halaman detail.</p>
+              </div>
             </li>
           </ul>
         </article>
 
-        <article class="about-detail-card about-skill-card">
-          <p class="section-eyebrow">Skills</p>
-          <h2>Skill Utama</h2>
-          <div class="skill-cloud">
-            <span>Astro</span>
-            <span>HTML</span>
-            <span>CSS</span>
-            <span>JavaScript</span>
-            <span>Responsive Design</span>
-            <span>UI Layout</span>
-            <span>Figma</span>
-            <span>Frontend Polish</span>
-          </div>
+        <article class="about-detail-card about-list-card">
+          <p class="section-eyebrow">Certification</p>
+          <h2>Sertifikasi</h2>
+          <ul class="about-simple-list">
+            <li>
+              <span>2026</span>
+              <div>
+                <strong>Frontend Development Fundamentals</strong>
+                <p>Dasar HTML, CSS, JavaScript, responsive design, dan struktur halaman web.</p>
+              </div>
+            </li>
+            <li>
+              <span>2026</span>
+              <div>
+                <strong>Responsive Web Design</strong>
+                <p>Prinsip layout adaptif, grid, breakpoint, typography, dan pengujian lintas device.</p>
+              </div>
+            </li>
+            <li>
+              <span>2026</span>
+              <div>
+                <strong>UI Design Practice</strong>
+                <p>Penerapan hierarchy, spacing, warna, komposisi, dan detail visual interface.</p>
+              </div>
+            </li>
+          </ul>
         </article>
       </section>
+
+      <section class="about-closing-card">
+        <div>
+          <p class="section-eyebrow">Current Direction</p>
+          <h2>Terus berkembang di frontend dan visual presentation.</h2>
+        </div>
+        <a class="secondary-button" href="/#projects">Lihat Project</a>
+      </section>
     </main>
+
+    <footer class="site-footer-simple">
+      <a class="brand" href="/">FIQRY FIRMANSYAH</a>
+      <p>Frontend developer and photography enthusiast.</p>
+      <nav aria-label="Footer navigation">
+        <a href="/#home">Home</a>
+        <a href="/about">About</a>
+        <a href="/#projects">Project</a>
+        <a href="/#contact">Contact</a>
+      </nav>
+    </footer>
 
     <script is:inline>
       const root = document.documentElement;

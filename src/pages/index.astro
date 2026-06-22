@@ -20,16 +20,11 @@ import { photoProjects, webProjects } from "../data/projectShowcase.js";
     <header class="site-header">
       <a class="brand" href="#home">FIQRY FIRMANSYAH</a>
       <nav class="nav-links" aria-label="Navigasi utama">
-        <a href="#home">Home</a>
+        <a class="active" href="#home">Home</a>
         <a href="#about">About</a>
         <a href="#projects">Project</a>
+        <a href="#contact">Contact</a>
       </nav>
-      <button class="theme-toggle" type="button" aria-label="Switch theme" data-theme-toggle>
-        <span class="theme-toggle-track" aria-hidden="true">
-          <span class="theme-toggle-dot"></span>
-        </span>
-        <span data-theme-label>Night</span>
-      </button>
     </header>
 
     <main>
@@ -155,7 +150,7 @@ import { photoProjects, webProjects } from "../data/projectShowcase.js";
           <div class="project-panel is-active" data-project-panel="web" id="project-web">
             <div class="project-panel-top">
               <span>Web Project</span>
-              <a class="project-see-more" href="/projects/web">Selengkapnya</a>
+              <a class="project-see-more" href="/projects">Selengkapnya</a>
             </div>
             <div class="modern-project-grid">
               {
@@ -213,7 +208,38 @@ import { photoProjects, webProjects } from "../data/projectShowcase.js";
           </div>
         </div>
       </section>
+
+      <section class="contact-simple" id="contact">
+        <div>
+          <p class="section-eyebrow">Contact Me</p>
+          <h2>Let's stay connected.</h2>
+          <p>
+            Terima kasih sudah melihat portfolio saya. Jika ingin terhubung, berdiskusi, atau
+            melihat update karya terbaru saya, silakan hubungi melalui link di bawah.
+          </p>
+        </div>
+        <div class="contact-actions">
+          <a class="primary-button" href="mailto:fiqry@example.com">Email Me</a>
+          <a class="contact-link contact-icon-link" href="https://www.linkedin.com/" aria-label="LinkedIn">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/linkedin/linkedin-original.svg" alt="" />
+          </a>
+          <a class="contact-link contact-icon-link" href="https://github.com/" aria-label="GitHub">
+            <img src="https://cdn.jsdelivr.net/gh/devicons/devicon/icons/github/github-original.svg" alt="" />
+          </a>
+        </div>
+      </section>
     </main>
+
+    <footer class="site-footer-simple">
+      <a class="brand" href="#home">FIQRY FIRMANSYAH</a>
+      <p>Frontend developer and photography enthusiast.</p>
+      <nav aria-label="Footer navigation">
+        <a href="#home">Home</a>
+        <a href="#about">About</a>
+        <a href="#projects">Project</a>
+        <a href="#contact">Contact</a>
+      </nav>
+    </footer>
 
     <script is:inline>
       const root = document.documentElement;

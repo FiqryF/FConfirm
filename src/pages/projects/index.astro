@@ -1,0 +1,94 @@
+---
+import "../../../styles.css";
+import { webProjects } from "../../data/projectShowcase.js";
+---
+
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Web Projects | Fiqry Firmansyah</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@500;700;900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body data-home-only>
+    <header class="site-header">
+      <a class="brand" href="/">FIQRY FIRMANSYAH</a>
+      <nav class="nav-links" aria-label="Navigasi utama">
+        <a href="/#home">Home</a>
+        <a href="/#about">About</a>
+        <a class="active" href="/#projects">Project</a>
+        <a href="/#contact">Contact</a>
+      </nav>
+    </header>
+
+    <main>
+      <section class="project-showcase project-page all-project-page">
+        <a class="project-back-icon" href="/#projects" aria-label="Kembali ke project">
+          <span aria-hidden="true"></span>
+        </a>
+        <div class="project-heading">
+          <p class="section-eyebrow">All Projects</p>
+          <h1>Complete collection of my web interface work.</h1>
+        </div>
+
+        <div class="all-project-section" id="web-projects">
+          <div class="project-panel-top">
+            <span>Web Projects</span>
+          </div>
+          <div class="modern-project-grid">
+            {
+              webProjects.map((project) => (
+                <article class="modern-project-card">
+                  <a href="/#projects" aria-label={`Lihat project ${project.title}`}>
+                    <div class="modern-project-media">
+                      <img src={project.image} alt={project.title} loading="lazy" />
+                      <span>{project.year}</span>
+                    </div>
+                    <div class="modern-project-body">
+                      <p>{project.type}</p>
+                      <h3>{project.title}</h3>
+                      <span>{project.description}</span>
+                      <div class="project-tech-row" aria-label={`Tech stack ${project.title}`}>
+                        {
+                          project.tech.map((tech) => (
+                            <span title={tech.label}>
+                              <img src={tech.icon} alt="" loading="lazy" />
+                            </span>
+                          ))
+                        }
+                      </div>
+                    </div>
+                  </a>
+                </article>
+              ))
+            }
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script is:inline>
+      const root = document.documentElement;
+      const themeToggle = document.querySelector("[data-theme-toggle]");
+      const themeLabel = document.querySelector("[data-theme-label]");
+
+      function setTheme(theme) {
+        root.dataset.theme = theme;
+        localStorage.setItem("theme", theme);
+        if (themeLabel) themeLabel.textContent = theme === "night" ? "Night" : "Light";
+      }
+
+      setTheme(localStorage.getItem("theme") || "night");
+
+      themeToggle?.addEventListener("click", () => {
+        setTheme(root.dataset.theme === "night" ? "light" : "night");
+      });
+    </script>
+  </body>
+</html>
