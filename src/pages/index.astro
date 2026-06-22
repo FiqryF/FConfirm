@@ -271,6 +271,44 @@ import { photoProjects, webProjects } from "../data/projectShowcase.js";
           });
         });
       });
+
+      const sectionLinks = document.querySelectorAll('.nav-links a[href^="#"], .site-footer-simple nav a[href^="#"]');
+      const pageSections = [...document.querySelectorAll("main > section[id]")];
+
+      function setActiveSection(id) {
+        document.querySelectorAll('.nav-links a[href^="#"]').forEach((link) => {
+          link.classList.toggle("active", link.getAttribute("href") === `#${id}`);
+        });
+      }
+
+      sectionLinks.forEach((link) => {
+        link.addEventListener("click", () => {
+          const id = link.getAttribute("href")?.replace("#", "");
+          if (id) setActiveSection(id);
+        });
+      });
+
+      function updateActiveSection() {
+        const isAtPageEnd =
+          window.scrollY + window.innerHeight >= document.documentElement.scrollHeight - 16;
+
+        if (isAtPageEnd) {
+          setActiveSection("contact");
+          return;
+        }
+
+        const triggerLine = window.innerHeight * 0.38;
+        const current = pageSections.reduce((closest, section) => {
+          const distance = Math.abs(section.getBoundingClientRect().top - triggerLine);
+          return distance < closest.distance ? { id: section.id, distance } : closest;
+        }, { id: pageSections[0]?.id, distance: Infinity });
+
+        if (current?.id) setActiveSection(current.id);
+      }
+
+      updateActiveSection();
+      window.addEventListener("scroll", updateActiveSection, { passive: true });
+      window.addEventListener("resize", updateActiveSection);
     </script>
   </body>
 </html>
