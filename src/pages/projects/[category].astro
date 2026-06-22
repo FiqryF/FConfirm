@@ -1,0 +1,142 @@
+---
+import "../../../styles.css";
+import { photoProjects, webProjects } from "../../data/projectShowcase.js";
+
+export function getStaticPaths() {
+  return [
+    {
+      params: { category: "web" },
+      props: {
+        categoryType: "web",
+        eyebrow: "Web Project",
+        title: "Selected web interfaces built with clean structure.",
+        description:
+          "Kumpulan project website dan interface terbaru yang fokus pada layout responsive, visual hierarchy, dan pengalaman penggunaan yang rapi.",
+        projects: webProjects,
+      },
+    },
+    {
+      params: { category: "photography" },
+      props: {
+        categoryType: "photography",
+        eyebrow: "Photography Project",
+        title: "Selected photography work with strong visual direction.",
+        description:
+          "Kumpulan karya fotografi terbaru dengan pendekatan komposisi, tone, mood, dan detail visual yang konsisten.",
+        projects: photoProjects,
+      },
+    },
+  ];
+}
+
+const { categoryType, eyebrow, title, description, projects } = Astro.props;
+const isPhotography = categoryType === "photography";
+---
+
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>{eyebrow} | Fiqry Firmansyah</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Inter:wght@300;400;500;600;700;800;900&family=Outfit:wght@500;700;900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body data-home-only>
+    <header class="site-header">
+      <a class="brand" href="/">FIQRY FIRMANSYAH</a>
+      <nav class="nav-links" aria-label="Navigasi utama">
+        <a href="/#home">Home</a>
+        <a href="/#about">About</a>
+        <a href="/#projects">Project</a>
+      </nav>
+      <button class="theme-toggle" type="button" aria-label="Switch theme" data-theme-toggle>
+        <span class="theme-toggle-track" aria-hidden="true">
+          <span class="theme-toggle-dot"></span>
+        </span>
+        <span data-theme-label>Night</span>
+      </button>
+    </header>
+
+    <main>
+      <section class="project-showcase project-page">
+        <div class="project-heading">
+          <p class="section-eyebrow">{eyebrow}</p>
+          <h1>{title}</h1>
+          <a class="project-see-more" href="/#projects">Kembali</a>
+        </div>
+        <p class="project-page-intro">{description}</p>
+        <div class="project-panels">
+          <div class="project-panel is-active">
+            <div class:list={["modern-project-grid", { "photo-project-grid": isPhotography }]}>
+              {
+                projects.map((project) => (
+                  <article
+                    class:list={[
+                      "modern-project-card",
+                      { "photo-project-card": isPhotography },
+                      isPhotography ? `photo-${project.layout || "normal"}` : "",
+                    ]}
+                  >
+                    <a href="/#projects" aria-label={`Lihat project ${project.title}`}>
+                      <div class="modern-project-media">
+                        <img src={project.image} alt={project.title} loading="lazy" />
+                        {isPhotography ? (
+                          <div class="photo-project-overlay">
+                            <p>{project.type}</p>
+                            <h3>{project.title}</h3>
+                            <span>{project.description}</span>
+                          </div>
+                        ) : (
+                          <span>{project.year}</span>
+                        )}
+                      </div>
+                      {!isPhotography && (
+                        <div class="modern-project-body">
+                          <p>{project.type}</p>
+                          <h3>{project.title}</h3>
+                          <span>{project.description}</span>
+                          <div class="project-tech-row" aria-label={`Tech stack ${project.title}`}>
+                            {
+                              project.tech.map((tech) => (
+                                <span title={tech.label}>
+                                  <img src={tech.icon} alt="" loading="lazy" />
+                                </span>
+                              ))
+                            }
+                          </div>
+                        </div>
+                      )}
+                    </a>
+                  </article>
+                ))
+              }
+            </div>
+          </div>
+        </div>
+      </section>
+    </main>
+
+    <script is:inline>
+      const root = document.documentElement;
+      const themeToggle = document.querySelector("[data-theme-toggle]");
+      const themeLabel = document.querySelector("[data-theme-label]");
+
+      function setTheme(theme) {
+        root.dataset.theme = theme;
+        localStorage.setItem("theme", theme);
+        if (themeLabel) themeLabel.textContent = theme === "night" ? "Night" : "Light";
+      }
+
+      setTheme(localStorage.getItem("theme") || "night");
+
+      themeToggle?.addEventListener("click", () => {
+        setTheme(root.dataset.theme === "night" ? "light" : "night");
+      });
+    </script>
+  </body>
+</html>
