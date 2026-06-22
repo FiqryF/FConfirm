@@ -1,0 +1,365 @@
+---
+import "../../styles.css";
+import {
+  aboutStack,
+  navItems,
+  photos,
+  projects,
+  skills,
+  socials,
+  techIcons,
+} from "../data/portfolio.js";
+
+const projectPayload = JSON.stringify(projects);
+---
+
+<!doctype html>
+<html lang="id">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Fiqry Firmansyah | Portfolio</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com" />
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin />
+    <link
+      href="https://fonts.googleapis.com/css2?family=Montserrat:wght@400;500;600;700;800;900&display=swap"
+      rel="stylesheet"
+    />
+  </head>
+  <body>
+    <header class="site-header">
+      <a class="brand" href="#home">FIQRY FIRMANSYAH</a>
+      <nav class="nav-links" aria-label="Navigasi utama">
+        {navItems.map((item) => <a href={item.href}>{item.label}</a>)}
+      </nav>
+      <button class="theme-toggle" type="button" aria-label="Switch theme" data-theme-toggle>
+        <span class="theme-toggle-track" aria-hidden="true">
+          <span class="theme-toggle-dot"></span>
+        </span>
+        <span data-theme-label>Night</span>
+      </button>
+      <button class="menu-button" type="button" aria-label="Buka menu" aria-expanded="false" data-menu-button>
+        <span></span>
+        <span></span>
+      </button>
+    </header>
+
+    <main>
+      <section class="hero" id="home">
+        <div class="hero-copy">
+          <h1>HI, I AM<br />FIQRY FIRMANSYAH.</h1>
+          <p class="intro">
+            A Sydney based front-end developer passionate about building accessible and user friendly
+            websites.
+          </p>
+          <div class="hero-actions">
+            <a class="primary-button" href="#contact">Contact Me</a>
+            <a class="icon-button" href="https://www.linkedin.com/" aria-label="LinkedIn">in</a>
+            <a class="icon-button" href="https://github.com/" aria-label="GitHub">gh</a>
+          </div>
+        </div>
+        <div class="portrait-card">
+          <img
+            src="https://images.unsplash.com/photo-1500648767791-00dcc994a43e?auto=format&fit=crop&w=900&q=90"
+            alt="Foto portrait profesional"
+          />
+        </div>
+      </section>
+
+      <section class="section-band" id="about">
+        <div class="section-title" data-title="ABOUT">ABOUT</div>
+        <div class="about-pro">
+          <div class="about-summary">
+            <p class="about-kicker">Profile</p>
+            <h2>Frontend developer who turns clean design into fast, responsive websites.</h2>
+            <p>
+              I focus on building polished web interfaces with strong visual hierarchy, consistent
+              spacing, and smooth user flows. My work combines <strong>Astro</strong>,
+              <strong>JavaScript</strong>, <strong>CSS</strong>, and <strong>Figma</strong> to
+              create portfolio sites, landing pages, and product-style interfaces that feel clear
+              and modern.
+            </p>
+            <div class="about-actions">
+              <a class="download-button" href="#" aria-label="Download resume">
+                <span aria-hidden="true">CV</span>
+                Download Resume
+              </a>
+              <a class="about-link" href="#projects">View Projects</a>
+            </div>
+          </div>
+
+          <div class="about-stats" aria-label="Portfolio summary">
+            <div><strong>07</strong><span>Featured Projects</span></div>
+            <div><strong>08</strong><span>Core Tools</span></div>
+            <div><strong>100%</strong><span>Responsive Layout</span></div>
+          </div>
+
+          <div class="about-card about-focus">
+            <p class="about-kicker">What I Do</p>
+            <ul>
+              <li>Build responsive portfolio and landing page interfaces.</li>
+              <li>Translate visual layouts into structured frontend components.</li>
+              <li>Polish spacing, color systems, typography, and UI states.</li>
+              <li>Keep pages lightweight, readable, and easy to maintain.</li>
+            </ul>
+          </div>
+
+          <div class="about-card about-process">
+            <p class="about-kicker">Workflow</p>
+            <div><span>01</span><strong>Understand</strong><p>Map the content, visual references, and expected user flow.</p></div>
+            <div><span>02</span><strong>Build</strong><p>Create reusable sections with responsive styling.</p></div>
+            <div><span>03</span><strong>Refine</strong><p>Adjust detail, spacing, contrast, and mobile behavior.</p></div>
+          </div>
+
+          <div class="about-card about-stack-card">
+            <p class="about-kicker">Tech Stack</p>
+            <div class="about-stack" aria-label="Tech stack">
+              {aboutStack.map((item) => (
+                <span title={item.label}>
+                  <img src={item.icon} alt="" />
+                  {item.label}
+                </span>
+              ))}
+            </div>
+          </div>
+        </div>
+      </section>
+
+      <section class="skills-social">
+        <div class="skills-panel">
+          <h2>Skills</h2>
+          <div class="skill-list" aria-label="Daftar skill">
+            {skills.map((skill) => (
+              <span class="skill" title={skill.label}>
+                <img src={skill.icon} alt="" />
+              </span>
+            ))}
+          </div>
+        </div>
+        <div class="social-panel">
+          {socials.map((social) => (
+            <a href={social.href} aria-label={social.aria}>{social.label}</a>
+          ))}
+        </div>
+      </section>
+
+      <section class="projects-section" id="projects">
+        <div class="project-frame">
+          <div class="section-title" data-title="PROJECTS">PROJECTS</div>
+          <div class="project-grid">
+            {projects.slice(0, 3).map((project, index) => (
+              <article class="project-card">
+                <div class={`project-thumb ${project.className}`}>
+                  <img src={project.image} alt={project.title} />
+                  <span>{project.thumb}</span>
+                  <i></i>
+                </div>
+                <div class="project-body">
+                  <h3>{project.title}</h3>
+                  <p class="project-type">{project.type}</p>
+                  <p>{project.description}</p>
+                  <div class="tech-row">
+                    {project.tech.map((item) => (
+                      <span>
+                        <img src={techIcons[item]} alt={item} />
+                      </span>
+                    ))}
+                  </div>
+                  <button class="project-more" type="button" data-project-index={index}>
+                    Lihat lebih lengkap
+                    <span aria-hidden="true">-&gt;</span>
+                  </button>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section class="gallery-section" id="gallery">
+        <div class="section-title" data-title="GALLERY">GALLERY</div>
+        <div class="photo-gallery">
+          <div class="gallery-intro">
+            <p class="about-kicker">Photography Works</p>
+            <h2>Selected shots with cinematic light, clean composition, and strong mood.</h2>
+            <div class="gallery-stats" aria-label="Photography summary">
+              <span>Street</span>
+              <span>Portrait</span>
+              <span>Landscape</span>
+              <span>Product</span>
+            </div>
+          </div>
+          <div class="photo-grid">
+            {photos.map((photo) => (
+              <article class={`photo-card ${photo.className || ""}`}>
+                <img src={photo.src} alt={photo.title} />
+                <div>
+                  <span>{photo.category}</span>
+                  <h3>{photo.title}</h3>
+                  <p>{photo.meta}</p>
+                </div>
+              </article>
+            ))}
+          </div>
+        </div>
+      </section>
+
+      <section class="contact-section" id="contact">
+        <div class="section-title" data-title="CONTACT">CONTACT</div>
+        <div class="contact-copy">
+          <p class="about-kicker">Contact</p>
+          <h2>Let's build a website that feels sharp, useful, and memorable.</h2>
+          <p>
+            Tertarik bekerja sama, membuat portfolio, landing page, atau dokumentasi visual untuk
+            project kamu? Kirim pesan dan saya akan balas secepatnya.
+          </p>
+          <div class="contact-links" aria-label="Contact links">
+            <a href="mailto:fiqry@example.com">fiqry@example.com</a>
+            <a href="https://github.com/">GitHub</a>
+            <a href="https://www.linkedin.com/">LinkedIn</a>
+          </div>
+        </div>
+        <form class="contact-form" data-contact-form>
+          <label>Name<input type="text" name="name" placeholder="Your name" /></label>
+          <label>Email<input type="email" name="email" placeholder="your@email.com" /></label>
+          <label class="message-field">
+            Message
+            <textarea name="message" rows="5" placeholder="Tell me about your project"></textarea>
+          </label>
+          <button class="primary-button" type="submit">Send Message</button>
+        </form>
+      </section>
+    </main>
+
+    <section class="project-modal" data-project-modal hidden>
+      <div class="project-modal-backdrop" data-project-close></div>
+      <main class="project-detail-page">
+        <button class="back-button" type="button" data-project-close>Back</button>
+        <section class="project-detail-hero">
+          <div>
+            <p class="about-kicker" data-modal-type></p>
+            <h1 data-modal-title></h1>
+            <p data-modal-overview></p>
+            <div class="detail-tech-row" data-modal-tech></div>
+          </div>
+          <div class="project-thumb detail-thumb" data-modal-thumb>
+            <img src="" alt="" data-modal-image />
+            <span data-modal-thumb-label></span>
+            <i></i>
+          </div>
+        </section>
+        <section class="project-detail-grid">
+          <div class="detail-panel">
+            <p class="about-kicker">Overview</p>
+            <p data-modal-overview-copy></p>
+          </div>
+          <div class="detail-panel">
+            <p class="about-kicker">Project Info</p>
+            <dl>
+              <div><dt>Role</dt><dd data-modal-role></dd></div>
+              <div><dt>Year</dt><dd data-modal-year></dd></div>
+              <div><dt>Status</dt><dd data-modal-status></dd></div>
+            </dl>
+          </div>
+        </section>
+      </main>
+    </section>
+
+    <footer class="site-footer">
+      <div>
+        <a class="brand" href="#home">FIQRY FIRMANSYAH</a>
+        <p>Frontend developer and photography enthusiast based in Indonesia.</p>
+      </div>
+      <nav aria-label="Footer navigation">
+        {navItems.map((item) => <a href={item.href}>{item.label}</a>)}
+      </nav>
+      <p class="footer-copy">(c) 2026 Fiqry Firmansyah. All rights reserved.</p>
+    </footer>
+
+    <script is:inline define:vars={{ projectPayload, techIcons }}>
+      const projects = JSON.parse(projectPayload);
+      const root = document.documentElement;
+      const themeToggle = document.querySelector("[data-theme-toggle]");
+      const themeLabel = document.querySelector("[data-theme-label]");
+      const menuButton = document.querySelector("[data-menu-button]");
+      const navLinks = document.querySelector(".nav-links");
+      const modal = document.querySelector("[data-project-modal]");
+
+      function setTheme(theme) {
+        root.dataset.theme = theme;
+        localStorage.setItem("theme", theme);
+        if (themeLabel) themeLabel.textContent = theme === "night" ? "Night" : "Light";
+      }
+
+      setTheme(localStorage.getItem("theme") || "night");
+
+      themeToggle?.addEventListener("click", () => {
+        setTheme(root.dataset.theme === "night" ? "light" : "night");
+      });
+
+      menuButton?.addEventListener("click", () => {
+        const isOpen = navLinks?.classList.toggle("open");
+        menuButton.setAttribute("aria-expanded", String(Boolean(isOpen)));
+      });
+
+      document.querySelectorAll(".nav-links a").forEach((link) => {
+        link.addEventListener("click", () => {
+          navLinks?.classList.remove("open");
+          menuButton?.setAttribute("aria-expanded", "false");
+        });
+      });
+
+      document.querySelector("[data-contact-form]")?.addEventListener("submit", (event) => {
+        event.preventDefault();
+        alert("Pesan berhasil dikirim!");
+      });
+
+      function openProject(index) {
+        const project = projects[index];
+        if (!project || !modal) return;
+
+        modal.querySelector("[data-modal-type]").textContent = project.type;
+        modal.querySelector("[data-modal-title]").textContent = project.title;
+        modal.querySelector("[data-modal-overview]").textContent = project.overview;
+        modal.querySelector("[data-modal-overview-copy]").textContent = project.overview;
+        modal.querySelector("[data-modal-role]").textContent = project.role;
+        modal.querySelector("[data-modal-year]").textContent = project.year;
+        modal.querySelector("[data-modal-status]").textContent = project.status;
+        modal.querySelector("[data-modal-thumb-label]").textContent = project.thumb;
+
+        const image = modal.querySelector("[data-modal-image]");
+        image.src = project.image;
+        image.alt = project.title;
+
+        const thumb = modal.querySelector("[data-modal-thumb]");
+        thumb.className = `project-thumb detail-thumb ${project.className}`;
+
+        const tech = modal.querySelector("[data-modal-tech]");
+        tech.innerHTML = project.tech
+          .map((item) => `<span><img src="${techIcons[item]}" alt="${item}" />${item.toUpperCase()}</span>`)
+          .join("");
+
+        modal.hidden = false;
+        document.body.classList.add("modal-open");
+      }
+
+      function closeProject() {
+        if (!modal) return;
+        modal.hidden = true;
+        document.body.classList.remove("modal-open");
+      }
+
+      document.querySelectorAll("[data-project-index]").forEach((button) => {
+        button.addEventListener("click", () => openProject(Number(button.dataset.projectIndex)));
+      });
+
+      document.querySelectorAll("[data-project-close]").forEach((button) => {
+        button.addEventListener("click", closeProject);
+      });
+
+      document.addEventListener("keydown", (event) => {
+        if (event.key === "Escape") closeProject();
+      });
+    </script>
+  </body>
+</html>
