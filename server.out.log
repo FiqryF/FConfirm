@@ -1,0 +1,27 @@
+
+> fiqry-portfolio@1.0.0 dev
+> astro dev --host 0.0.0.0 --port 5173
+
+[2m15.43.21[22m [34m[types][39m Generated [2m1ms[22m
+[2m15.43.21[22m [34m[content][39m Syncing content
+[2m15.43.21[22m [34m[content][39m Synced content
+
+[42m[1m astro [22m[49m [32mv5.18.2[39m [2mready in[22m 144 [2mms[22m
+
+[2m┃[22m Local    [36mhttp://localhost:5173/[39m
+[2m┃[22m Network  [36mhttp://192.168.1.93:5173/[39m
+
+[2m15.43.21[22m [32mwatching for file changes...[39m
+
+[43m[30m update [39m[49m [33m▶ New version of Astro available: 7.0.2[39m
+  Run [36mnpx @astrojs/upgrade[39m to update
+
+[2m15.45.43[22m [34m[200][39m / [2m127ms[22m
+[2m15.45.59[22m [34m[200][39m /projects [2m19ms[22m
+[2m15.46.03[22m [34m[200][39m / [2m13ms[22m
+[2m15.46.08[22m [34m[200][39m /projects/photography [2m14ms[22m
+[2m15.46.43[22m [34m[200][39m /projects [2m9ms[22m
+[2m15.46.45[22m [34m[200][39m / [2m8ms[22m
+[2m15.46.48[22m [34m[200][39m /projects/photography [2m10ms[22m
+[2m15.46.52[22m [34m[200][39m / [2m10ms[22m
+[2m15.48.25[22m [34m[200][39m /about [2m12ms[22m

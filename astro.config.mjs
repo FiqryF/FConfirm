@@ -8,15 +8,4 @@ export default defineConfig({
     host: "0.0.0.0",
     port: 5173,
   },
-  vite: {
-    optimizeDeps: {
-      noDiscovery: true,
-      exclude: ["aria-query", "axobject-query"],
-    },
-    server: {
-      fs: {
-        allow: ["."],
-      },
-    },
-  },
 });
